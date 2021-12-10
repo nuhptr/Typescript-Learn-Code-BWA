@@ -24,6 +24,9 @@ export class Admin extends Users{
     write: boolean = true;
     phone: string;
 
+    // private property to getter setter
+    private _email: string = "";
+
     constructor(phone: string, name: string, age: number) {
         super(name, age);
         this.phone = phone;
@@ -35,9 +38,25 @@ export class Admin extends Users{
             write: this.write,
         }
     }
+
+    // TODO: getter setter
+    set email(value: string) {
+        if (value.length < 5) {
+            this._email = "Email salah"
+        } else {
+            this._email = value;
+        }
+    }
+
+    get email(): string {
+        return this._email;
+    }
 }
 
 export let admin = new Admin("089674135843", "Adi", 20);
-console.log(`umur admin ${admin.getName()} adalah ${admin.getAge()}`);
-console.log(admin.getRole());
-console.log(admin.phone);
+console.log(`nama admin ${admin.getName()} dan umurnya ${admin.getAge()}`); // nama admin adi dan umurnya 20
+console.log(admin.getRole()); // {read: true, write: true}
+console.log(admin.phone); // 089674135843
+
+admin.email = "nugrahaadi733@gmail.com";
+console.log(admin.email); // nugrahaadi733@gmail.com

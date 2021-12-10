@@ -26,6 +26,8 @@ class Admin extends Users {
         super(name, age);
         this.read = true;
         this.write = true;
+        // private property to getter setter
+        this._email = "";
         this.phone = phone;
     }
     getRole() {
@@ -34,9 +36,23 @@ class Admin extends Users {
             write: this.write,
         };
     }
+    // TODO: getter setter
+    set email(value) {
+        if (value.length < 5) {
+            this._email = "Email salah";
+        }
+        else {
+            this._email = value;
+        }
+    }
+    get email() {
+        return this._email;
+    }
 }
 exports.Admin = Admin;
 exports.admin = new Admin("089674135843", "Adi", 20);
-console.log(`umur admin ${exports.admin.getName()} adalah ${exports.admin.getAge()}`);
-console.log(exports.admin.getRole());
-console.log(exports.admin.phone);
+console.log(`nama admin ${exports.admin.getName()} dan umurnya ${exports.admin.getAge()}`); // nama admin adi dan umurnya 20
+console.log(exports.admin.getRole()); // {read: true, write: true}
+console.log(exports.admin.phone); // 089674135843
+exports.admin.email = "nugrahaadi733@gmail.com";
+console.log(exports.admin.email); // nugrahaadi733@gmail.com
