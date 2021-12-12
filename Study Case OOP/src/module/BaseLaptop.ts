@@ -14,12 +14,12 @@ abstract class BaseLaptop<T> implements ILaptop<T> {
         this.withTouchButton = withTouchButton
     }
 
-    a() {
-        return keyboard.a();
+    a() : void {
+        console.log(keyboard.a());
     }
 
-    b() {
-        return keyboard.b();
+    b() : void { 
+        console.log(keyboard.b());
     }
 }
 

@@ -7,5 +7,7 @@ const Asus_1 = __importDefault(require("./Asus"));
 const Macbook_1 = __importDefault(require("./Macbook"));
 let asus = new Asus_1.default("ROG", true, true);
 console.log(asus);
-let macbook = new Macbook_1.default("Pro Retina 2019", true, true);
+let macbook = new Macbook_1.default("Pro Retina 2019", false, false);
 console.log(macbook);
+macbook.a();
+macbook.b();

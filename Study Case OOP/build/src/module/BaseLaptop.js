@@ -32,10 +32,10 @@ class BaseLaptop {
         this.withTouchButton = withTouchButton;
     }
     a() {
-        return keyboard.a();
+        console.log(keyboard.a());
     }
     b() {
-        return keyboard.b();
+        console.log(keyboard.b());
     }
 }
 exports.default = BaseLaptop;
