@@ -18,6 +18,7 @@
 > then konfiguration in tsconfig.json
 - "allowJs": true,  
 - "outDir": "./build",
+- "forceConsistentCasingInFileNames": false,
 
 > then run the typescript build
 - ctrl + shift + b -> tsc:build - tsconfig.json
