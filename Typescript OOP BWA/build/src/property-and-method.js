@@ -9,7 +9,9 @@ class People {
     }
 }
 People.getRoleName = "Admin";
+// call the static property
 exports.people = People.getRoleName;
 console.log(exports.people); // Admin
+// call the static method
 exports.name = People.getNameRole();
 console.log(exports.name); // hei

@@ -1,3 +1,4 @@
+import { car } from "./src/abstract-class";
 import { User } from "./src/class";
 import { fullName } from "./src/function-default-parameter";
 import { admin } from "./src/inheritance";
@@ -11,3 +12,4 @@ getUmur;
 User;
 admin;
 people;
+car;
