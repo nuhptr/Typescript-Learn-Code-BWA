@@ -1,2 +1,2 @@
-# Typescript-Learn-Code-BWA
+# Typescript-Learn-Code
 The repository contain typescript code and project [Learn]
