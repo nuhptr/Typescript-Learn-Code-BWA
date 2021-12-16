@@ -1,0 +1,10 @@
+useful dependecies
+
+- body-parser : untuk parse json
+- morgan : untuk mengetahui status API saat user akses
+- express : expressJs
+- helmet : secure express app by setting variuos https
+- cors : CORS is a node.js package for providing 
+	a Connect/Express middleware 
+	that can be used to enable CORS with various options.
+- compression : memperkecil ukuran dari respons
