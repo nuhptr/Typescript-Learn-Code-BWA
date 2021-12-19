@@ -6,6 +6,7 @@ import morgan from "morgan";
 import compression from "compression";
 import helmet from "helmet";
 import cors from "cors";
+import { config as dotenv } from "dotenv";
 
 // user Route
 import UserRouter from "./src/routers/UserRouter";
@@ -18,6 +19,7 @@ class App {
     this.app = express();
     this.plugins();
     this.routes();
+    dotenv();
   }
 
   protected plugins(): void {
@@ -31,7 +33,7 @@ class App {
 
   protected routes(): void {
     this.app.route("/").get((req: Request, res: Response) => {
-      res.send("Ini adalah route menggunakan TS");
+      res.send("Ini adalah route menggunakan Typescript");
     });
 
     // TODO: custom routes
@@ -44,4 +46,6 @@ const port: number = 8000;
 const app = new App().app;
 app.listen(port, () => {
   console.log(`Aplikasi ini berjalan di port ${port}`);
+
+  console.log(process.env.DB_HOST);
 });

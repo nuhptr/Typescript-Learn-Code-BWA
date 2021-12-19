@@ -5,8 +5,8 @@ import BaseRouter from "./BaseRouter";
 
 class AuthRouter extends BaseRouter {
   public routes(): void {
-    this.router.post("/login", AuthController.index);
-    this.router.post("/register", AuthController.create);
+    this.router.post("/login", AuthController.login);
+    this.router.post("/register", AuthController.register);
   }
 }
 

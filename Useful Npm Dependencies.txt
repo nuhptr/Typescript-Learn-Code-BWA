@@ -1,10 +1,21 @@
 useful dependecies
 
-- body-parser : untuk parse json
-- morgan : untuk mengetahui status API saat user akses
-- express : expressJs
-- helmet : secure express app by setting variuos https
-- cors : CORS is a node.js package for providing 
-	a Connect/Express middleware 
-	that can be used to enable CORS with various options.
-- compression : memperkecil ukuran dari respons
+- body-parser 	: untuk parse json.
+
+- morgan 	: untuk mengetahui status API saat user akses.
+- express 	: expressJs.
+- helmet 	: secure express app by setting variuos https.
+- cors 		: CORS is a node.js package for providing 
+		  a Connect/Express middleware 
+		  that can be used to enable CORS with various options.
+
+- compression 	: memperkecil ukuran dari respons.
+- dotenv 	: untuk menyimpan credentials dari enviroment kita (misal db/dll).
+
+- sequilize 	: dependecies untuk menghubungkan ORM (Object Relational Mapping) Database
+		  seperti PostgreSQL, MySql, MariaDB, SqLite, and Microsoft SQL Server.
+- sequilize-cli : configurasi sequilize.
+- mysql2	: driver to sql.
+
+
+- bcrypt	: untuk menghashing password user.
