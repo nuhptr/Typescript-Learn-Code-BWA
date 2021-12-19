@@ -48,4 +48,5 @@ class UserController implements IController {
   }
 }
 
+// TODO: setiap selesai membuat
 export default new UserController();

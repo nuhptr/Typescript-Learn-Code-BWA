@@ -12,4 +12,5 @@ abstract class BaseRouter implements InterfaceRouter {
   abstract routes(): void;
 }
 
+// TODO : setiap selesai membuat
 export default BaseRouter;

@@ -8,4 +8,5 @@ interface IController {
   delete(req: Request, res: Response): Response;
 }
 
+// TODO: setiap selesai membuat
 export default IController;

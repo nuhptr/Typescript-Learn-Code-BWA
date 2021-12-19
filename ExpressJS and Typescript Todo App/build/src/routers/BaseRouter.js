@@ -7,4 +7,5 @@ class BaseRouter {
         this.routes();
     }
 }
+// TODO : setiap selesai membuat
 exports.default = BaseRouter;

@@ -1,14 +1,17 @@
 import { Response, Request } from "express";
+
+import PasswordHash from "../utils/HashPassword";
 const db = require("../db/models");
 
 // Controllers
 class AuthController {
   register = async (req: Request, res: Response): Promise<Response> => {
     let { username, password } = req.body;
+    const hashedPassword: string = await PasswordHash.hash(password);
 
     const createdUser = await db.user.create({
       username,
-      password,
+      password: hashedPassword,
     });
 
     return res.send(createdUser);
@@ -19,4 +22,5 @@ class AuthController {
   }
 }
 
+// TODO: setiap selesai membuat
 export default new AuthController();

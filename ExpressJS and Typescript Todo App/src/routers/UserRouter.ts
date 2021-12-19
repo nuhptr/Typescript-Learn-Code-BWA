@@ -12,4 +12,5 @@ class UserRouter extends BaseRouter {
   }
 }
 
+// TODO : setiap selesai membuat
 export default new UserRouter().router;

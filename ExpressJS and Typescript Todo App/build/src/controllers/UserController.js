@@ -34,4 +34,5 @@ class UserController {
         return res.send(people);
     }
 }
+// TODO: setiap selesai membuat
 exports.default = new UserController();

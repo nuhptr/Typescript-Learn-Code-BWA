@@ -15,4 +15,5 @@ class UserRouter extends BaseRouter_1.default {
         this.router.delete("/:id", UserController_1.default.delete);
     }
 }
+// TODO : setiap selesai membuat
 exports.default = new UserRouter().router;
