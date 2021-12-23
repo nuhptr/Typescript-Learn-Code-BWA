@@ -11,6 +11,7 @@ import { config as dotenv } from "dotenv";
 // user Route
 import UserRouter from "./src/routers/UserRouter";
 import AuthRouter from "./src/routers/AuthRouter";
+import TodoRouter from "./src/routers/TodoRouter";
 
 class App {
   public app: Application;
@@ -39,6 +40,7 @@ class App {
     // TODO: custom routes
     this.app.use("/api/v1/users", UserRouter);
     this.app.use("/api/v1/auth", AuthRouter);
+    this.app.use("/api/v1/todos", TodoRouter)
   }
 }
 
@@ -46,6 +48,5 @@ const port: number = 8000;
 const app = new App().app;
 app.listen(port, () => {
   console.log(`Aplikasi ini berjalan di port ${port}`);
-
   console.log(process.env.DB_HOST);
 });

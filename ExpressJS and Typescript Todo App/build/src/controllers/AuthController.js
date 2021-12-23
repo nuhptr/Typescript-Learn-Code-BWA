@@ -12,23 +12,41 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const HashPassword_1 = __importDefault(require("../utils/HashPassword"));
+const Authentication_1 = __importDefault(require("../utils/Authentication"));
+const Authentication_2 = __importDefault(require("../utils/Authentication"));
 const db = require("../db/models");
 // Controllers
 class AuthController {
     constructor() {
         this.register = (req, res) => __awaiter(this, void 0, void 0, function* () {
             let { username, password } = req.body;
-            const hashedPassword = yield HashPassword_1.default.hash(password);
+            const hashedPassword = yield Authentication_2.default.passwordHash(password);
             const createdUser = yield db.user.create({
                 username,
                 password: hashedPassword,
             });
             return res.send(createdUser);
         });
-    }
-    login(req, res) {
-        return res.send("");
+        this.login = (req, res) => __awaiter(this, void 0, void 0, function* () {
+            // TODO: cari data user by username
+            let { username, password } = req === null || req === void 0 ? void 0 : req.body;
+            const user = yield db.user.findOne({
+                where: { username },
+            });
+            // TODO: check password
+            let compare = yield Authentication_1.default.passwordCheck(password, user.password);
+            // TODO: generate token
+            if (compare) {
+                let token = Authentication_1.default.generateToken(user.id, username, user.password);
+                return res.send({
+                    token,
+                });
+            }
+            return res.send("auth failed");
+        });
+        this.profile = (req, res) => {
+            return res.send(req.app.locals.credential);
+        };
     }
 }
 // TODO: setiap selesai membuat
