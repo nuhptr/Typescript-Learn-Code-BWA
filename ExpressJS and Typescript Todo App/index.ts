@@ -34,13 +34,13 @@ class App {
 
   protected routes(): void {
     this.app.route("/").get((req: Request, res: Response) => {
-      res.send("Ini adalah route menggunakan Typescript");
+      res.send("Route default Typescript");
     });
 
     // TODO: custom routes
     this.app.use("/api/v1/users", UserRouter);
     this.app.use("/api/v1/auth", AuthRouter);
-    this.app.use("/api/v1/todos", TodoRouter)
+    this.app.use("/api/v1/todos", TodoRouter);
   }
 }
 

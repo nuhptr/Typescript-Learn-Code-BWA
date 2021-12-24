@@ -7,7 +7,7 @@ const db = require("../db/models");
 
 // Controllers
 class AuthController {
-  register = async (req: Request, res: Response): Promise<Response> => {
+  register = async function (req: Request, res: Response): Promise<Response> {
     let { username, password } = req.body;
     const hashedPassword: string = await PasswordHash.passwordHash(password);
 
@@ -19,7 +19,7 @@ class AuthController {
     return res.send(createdUser);
   };
 
-  login = async (req: Request, res: Response): Promise<Response> => {
+  login = async function (req: Request, res: Response): Promise<Response> {
     // TODO: cari data user by username
     let { username, password } = req?.body;
 
@@ -45,7 +45,7 @@ class AuthController {
     return res.send("auth failed");
   };
 
-  profile = (req: Request, res: Response): Response => {
+  profile = function (req: Request, res: Response): Response {
     return res.send(req.app.locals.credential);
   };
 }

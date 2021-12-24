@@ -31,7 +31,7 @@ class App {
     }
     routes() {
         this.app.route("/").get((req, res) => {
-            res.send("Ini adalah route menggunakan Typescript");
+            res.send("Route default Typescript");
         });
         // TODO: custom routes
         this.app.use("/api/v1/users", UserRouter_1.default);

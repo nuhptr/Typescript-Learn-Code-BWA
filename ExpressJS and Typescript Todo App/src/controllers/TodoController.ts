@@ -1,23 +1,58 @@
 import { Request, Response } from "express";
 
 import IController from "./InterfaceController";
+import TodoServices from "../../services/TodoServices";
 
 class TodoController implements IController {
-  index(req: Request, res: Response): Response {
-    return res.send("index");
-  }
-  create(req: Request, res: Response): Response {
-    return res.send("create");
-  }
-  show(req: Request, res: Response): Response {
-    return res.send("show");
-  }
-  update(req: Request, res: Response): Response {
-    return res.send("update");
-  }
-  delete(req: Request, res: Response): Response {
-    return res.send("delete");
-  }
+  index = async function (req: Request, res: Response): Promise<Response> {
+    const service: TodoServices = new TodoServices(req);
+    const todos = await service.getAll();
+
+    return res.send({
+      data: todos,
+      message: `Get All Todo id user ${service.credential.id}`,
+    });
+  };
+
+  create = async function (req: Request, res: Response): Promise<Response> {
+    const service: TodoServices = new TodoServices(req);
+    const todo = await service.store();
+
+    return res.send({
+      data: todo,
+      message: "Todo Created",
+    });
+  };
+
+  show = async function (req: Request, res: Response): Promise<Response> {
+    const service: TodoServices = new TodoServices(req);
+    const todo = await service.getOne();
+
+    return res.send({
+      data: todo,
+      message: `Success Get Data`,
+    });
+  };
+
+  update = async function (req: Request, res: Response): Promise<Response> {
+    const service: TodoServices = new TodoServices(req);
+    const todo = await service.update();
+
+    return res.send({
+      data: todo,
+      message: `todo update`,
+    });
+  };
+
+  delete = async function (req: Request, res: Response): Promise<Response> {
+    const service: TodoServices = new TodoServices(req);
+    const todo = await service.delete();
+
+    return res.send({
+      data: todo,
+      message: "todo deleted",
+    });
+  };
 }
 
 export default new TodoController();

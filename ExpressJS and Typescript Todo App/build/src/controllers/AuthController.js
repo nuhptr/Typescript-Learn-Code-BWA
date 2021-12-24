@@ -18,33 +18,37 @@ const db = require("../db/models");
 // Controllers
 class AuthController {
     constructor() {
-        this.register = (req, res) => __awaiter(this, void 0, void 0, function* () {
-            let { username, password } = req.body;
-            const hashedPassword = yield Authentication_2.default.passwordHash(password);
-            const createdUser = yield db.user.create({
-                username,
-                password: hashedPassword,
-            });
-            return res.send(createdUser);
-        });
-        this.login = (req, res) => __awaiter(this, void 0, void 0, function* () {
-            // TODO: cari data user by username
-            let { username, password } = req === null || req === void 0 ? void 0 : req.body;
-            const user = yield db.user.findOne({
-                where: { username },
-            });
-            // TODO: check password
-            let compare = yield Authentication_1.default.passwordCheck(password, user.password);
-            // TODO: generate token
-            if (compare) {
-                let token = Authentication_1.default.generateToken(user.id, username, user.password);
-                return res.send({
-                    token,
+        this.register = function (req, res) {
+            return __awaiter(this, void 0, void 0, function* () {
+                let { username, password } = req.body;
+                const hashedPassword = yield Authentication_2.default.passwordHash(password);
+                const createdUser = yield db.user.create({
+                    username,
+                    password: hashedPassword,
                 });
-            }
-            return res.send("auth failed");
-        });
-        this.profile = (req, res) => {
+                return res.send(createdUser);
+            });
+        };
+        this.login = function (req, res) {
+            return __awaiter(this, void 0, void 0, function* () {
+                // TODO: cari data user by username
+                let { username, password } = req === null || req === void 0 ? void 0 : req.body;
+                const user = yield db.user.findOne({
+                    where: { username },
+                });
+                // TODO: check password
+                let compare = yield Authentication_1.default.passwordCheck(password, user.password);
+                // TODO: generate token
+                if (compare) {
+                    let token = Authentication_1.default.generateToken(user.id, username, user.password);
+                    return res.send({
+                        token,
+                    });
+                }
+                return res.send("auth failed");
+            });
+        };
+        this.profile = function (req, res) {
             return res.send(req.app.locals.credential);
         };
     }
