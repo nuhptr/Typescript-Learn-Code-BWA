@@ -1,6 +1,6 @@
 import { Request } from "express";
 
-const db = require("../src/db/models");
+const db = require("../db/models");
 
 class TodoServices {
   credential: {
