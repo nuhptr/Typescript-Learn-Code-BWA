@@ -12,7 +12,7 @@ class AuthRouter extends BaseRouter_1.default {
     routes() {
         this.router.post("/login", AuthValidator_1.default, AuthController_1.default.login);
         this.router.post("/register", AuthValidator_1.default, AuthController_1.default.register);
-        this.router.get("/profile", AuthMiddleware_1.auth, AuthController_1.default.profile);
+        this.router.get("/getProfile", AuthMiddleware_1.auth, AuthController_1.default.profile);
     }
 }
 // TODO: setiap selesai membuat

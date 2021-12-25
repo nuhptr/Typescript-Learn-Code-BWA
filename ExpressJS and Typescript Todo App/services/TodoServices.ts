@@ -25,7 +25,7 @@ class TodoServices {
   };
 
   store = async () => {
-    const description = this.body;
+    const { description } = this.body;
 
     const todos = await db.todo.create({
       user_id: this.credential.id,
@@ -36,7 +36,7 @@ class TodoServices {
   };
 
   getOne = async () => {
-    const id = this.params;
+    const { id } = this.params;
 
     const todo = await db.todo.findOne({
       where: { id, user_id: this.credential.id },
@@ -46,8 +46,8 @@ class TodoServices {
   };
 
   update = async () => {
-    const id = this.params;
-    const description = this.body;
+    const { id } = this.params;
+    const { description } = this.body;
 
     const todo = await db.todo.update(
       { description },
@@ -60,7 +60,7 @@ class TodoServices {
   };
 
   delete = async () => {
-    const id = this.params;
+    const { id } = this.params;
 
     const todo = await db.todo.destroy({
       where: { id, user_id: this.credential.id },
