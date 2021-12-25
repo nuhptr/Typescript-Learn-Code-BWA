@@ -33,6 +33,8 @@
    
    Migrate database to MySql
    - npx sequelize-cli db:migrate
+   // untuk membalikan migrasi
+   - npx sequelize-cli db:undo
 
 4. npm add (nama_package) -D => tidak muncul untuk di download
    - "@types/validator": "^13.7.0",
