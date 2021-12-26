@@ -90,4 +90,10 @@ class ComputerFactory {
 
 // execute
 const pcLed = ComputerFactory.buildComputer(MonitorType.LED, ComputerType.PC);
-console.log(pcLed);
+console.log(pcLed.getModel());
+
+const laptopLed = ComputerFactory.buildComputer(
+  MonitorType.LED,
+  ComputerType.LAPTOP
+);
+console.log(laptopLed.getModel());
