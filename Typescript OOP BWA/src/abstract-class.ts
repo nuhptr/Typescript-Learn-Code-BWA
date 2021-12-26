@@ -15,6 +15,6 @@ class MotorCycle extends Vehicle {
     wheels: number = 2;
 }
 
-export let car = new Car();
+let car = new Car();
 console.log(car.wheels);
 car.start();

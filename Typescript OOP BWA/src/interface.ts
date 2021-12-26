@@ -39,5 +39,5 @@ class Macbook implements Laptop {
     } 
 }
 
-export let asus = new Asus("ROG", true);
+let asus = new Asus("ROG", true);
 console.log(asus.on());

@@ -53,7 +53,7 @@ export class Admin extends Users{
     }
 }
 
-export let admin = new Admin("089674135843", "Adi", 20);
+let admin = new Admin("089674135843", "Adi", 20);
 console.log(`nama admin ${admin.getName()} dan umurnya ${admin.getAge()}`); // nama admin adi dan umurnya 20
 console.log(admin.getRole()); // {read: true, write: true}
 console.log(admin.phone); // 089674135843

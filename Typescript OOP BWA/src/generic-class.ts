@@ -18,7 +18,7 @@ class List<T> {
     }
 }
 
-export let number = new List<number>(1, 2, 3, 4, 5, 6, 7);
+let number = new List<number>(1, 2, 3, 4, 5, 6, 7);
 number.add(5);
 number.addMultipleElement(7, 8, 9);
 console.log(number.getAllArray); // [1, 2, 3, 4, 5, 6, 7, 8, 9]

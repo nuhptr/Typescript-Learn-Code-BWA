@@ -1,5 +1,5 @@
 // TODO: default parameter
-export const fullName = (firstName: string = "Adi", lastName: string = "Nugraha") => {
+const fullName = (firstName: string = "Adi", lastName: string = "Nugraha") => {
     return firstName + " " + lastName;
 }
 

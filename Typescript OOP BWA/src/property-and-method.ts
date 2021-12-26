@@ -10,9 +10,9 @@ class People {
 }
 
 // call the static property
-export let people = People.getRoleName;
+let people = People.getRoleName;
 console.log(people); // Admin
 
 // call the static method
-export let name = People.getNameRole();
-console.log(name); // hei
+let names = People.getNameRole();
+console.log(names); // hei
