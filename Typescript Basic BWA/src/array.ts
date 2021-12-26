@@ -7,3 +7,7 @@ array2 = ['adi', 'nugraha', 'putra'];
 
 let array3: any[];
 array3 = [1, 'String', true];
+
+console.log(array);
+console.log(array2);
+console.log(array3);
