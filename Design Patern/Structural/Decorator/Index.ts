@@ -1,4 +1,4 @@
-class Product {
+class ProductDetail {
   name: string;
   price: number;
 
@@ -15,7 +15,7 @@ class Product {
   }
 }
 
-const productA = new Product("Product A", 500000);
+const productA = new ProductDetail("Product A", 500000);
 console.log(productA.getProduct());
 
 // TODO: jika masih 1/2 code gamasalah tetapi jika sudah tersebar di seluruh

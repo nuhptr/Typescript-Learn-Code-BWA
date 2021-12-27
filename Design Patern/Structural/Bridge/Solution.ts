@@ -31,7 +31,7 @@ interface InterfaceProduct {
   name: string;
 }
 
-abstract class Product implements InterfaceProduct {
+abstract class SellProduct implements InterfaceProduct {
   name: string;
   price: Price;
 
@@ -43,13 +43,13 @@ abstract class Product implements InterfaceProduct {
   abstract sell(): void;
 }
 
-class Computer extends Product {
+class Computer extends SellProduct {
   sell(): void {
     console.log(`jual ${this.name} dengan harga ${this.price.sellPrice()}`);
   }
 }
 
-class Fashion extends Product {
+class Fashion extends SellProduct {
   sell(): void {
     console.log(`jual ${this.name} dengan harga ${this.price.sellPrice()}`);
   }
