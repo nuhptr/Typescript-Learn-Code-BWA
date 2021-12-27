@@ -15,7 +15,7 @@ class Cheap implements Price {
   name: string = "Murah";
 
   sellPrice(): string {
-    return `jual harga ${this.name}`;
+    return `${this.name}`;
   }
 }
 
@@ -23,7 +23,7 @@ class Expensive implements Price {
   name: string = "Mahal";
 
   sellPrice(): string {
-    return `jual harga ${this.name}`;
+    return `${this.name}`;
   }
 }
 
@@ -58,3 +58,6 @@ class Fashion extends Product {
 // ---
 const fashionMurah = new Fashion("baju lengan panjang", new Cheap());
 console.log(fashionMurah.sell());
+
+const computerMahal = new Computer("macbook pro 2020", new Expensive());
+console.log(computerMahal.sell());

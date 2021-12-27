@@ -1,5 +1,5 @@
 /**
- *                                                  Store
+ *                                 Store
  *
  *           Fashion                              Computer
  *
