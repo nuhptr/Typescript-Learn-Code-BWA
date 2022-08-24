@@ -1,2 +1,2 @@
 # Typescript-Learn-Code
-The repository contain typescript code and project [Learn]
+[Mas Nusendra and Udemy] Typescript Repository Code
