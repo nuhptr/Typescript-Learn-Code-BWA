@@ -11,6 +11,9 @@ Typescript Repository Code learn from basic until expert
    -  [Behavioral](./typescript-mas-rendra/design-pattern/behavioral/)
    -  [Creational](./typescript-mas-rendra/design-pattern/creational/)
    -  [Structural](./typescript-mas-rendra/design-pattern/structural/)
+3. [OOP](./typescript-mas-rendra/oop/)
+4. [OOP Case](./typescript-mas-rendra/oop-case/)
+5. [TODO Express](./typescript-mas-rendra/todo-express/)
 
 ### Typescript my learn
 
