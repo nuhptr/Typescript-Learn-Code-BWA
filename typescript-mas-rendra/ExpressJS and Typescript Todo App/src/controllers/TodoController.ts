@@ -1,58 +1,43 @@
-import { Request, Response } from "express";
+import { Request, Response } from "express"
 
-import IController from "./InterfaceController";
-import TodoServices from "../services/TodoServices";
+import IController from "./InterfaceController"
+import TodoServices from "../services/TodoServices"
 
 class TodoController implements IController {
-  index = async function (req: Request, res: Response): Promise<Response> {
-    const service: TodoServices = new TodoServices(req);
-    const todos = await service.getAll();
+   index = async function (req: Request, res: Response): Promise<Response> {
+      const service: TodoServices = new TodoServices(req)
+      const todos = await service.getAll()
 
-    return res.send({
-      data: todos,
-      message: `Get All Todo id user ${service.credential.id}`,
-    });
-  };
+      return res.send({ data: todos, message: `Get All Todo id user ${service.credential.id}` })
+   }
 
-  create = async function (req: Request, res: Response): Promise<Response> {
-    const service: TodoServices = new TodoServices(req);
-    const todo = await service.store();
+   create = async function (req: Request, res: Response): Promise<Response> {
+      const service: TodoServices = new TodoServices(req)
+      const todo = await service.store()
 
-    return res.send({
-      data: todo,
-      message: "Todo Created",
-    });
-  };
+      return res.send({ data: todo, message: "Todo Created" })
+   }
 
-  show = async function (req: Request, res: Response): Promise<Response> {
-    const service: TodoServices = new TodoServices(req);
-    const todo = await service.getOne();
+   show = async function (req: Request, res: Response): Promise<Response> {
+      const service: TodoServices = new TodoServices(req)
+      const todo = await service.getOne()
 
-    return res.send({
-      data: todo,
-      message: `Success Get Data`,
-    });
-  };
+      return res.send({ data: todo, message: `Success Get Data` })
+   }
 
-  update = async function (req: Request, res: Response): Promise<Response> {
-    const service: TodoServices = new TodoServices(req);
-    const todo = await service.update();
+   update = async function (req: Request, res: Response): Promise<Response> {
+      const service: TodoServices = new TodoServices(req)
+      const todo = await service.update()
 
-    return res.send({
-      data: todo,
-      message: `todo update`,
-    });
-  };
+      return res.send({ data: todo, message: `todo update` })
+   }
 
-  delete = async function (req: Request, res: Response): Promise<Response> {
-    const service: TodoServices = new TodoServices(req);
-    const todo = await service.delete();
+   delete = async function (req: Request, res: Response): Promise<Response> {
+      const service: TodoServices = new TodoServices(req)
+      const todo = await service.delete()
 
-    return res.send({
-      data: todo,
-      message: "todo deleted",
-    });
-  };
+      return res.send({ data: todo, message: "todo deleted" })
+   }
 }
 
-export default new TodoController();
+export default new TodoController()

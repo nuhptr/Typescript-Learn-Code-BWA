@@ -1,16 +1,13 @@
-import { Router, Request, Response } from "express";
-import InterfaceRouter from "./InterfaceRouter";
+import { Router } from "express"
+import InterfaceRouter from "./InterfaceRouter"
 
-abstract class BaseRouter implements InterfaceRouter {
-  public router: Router;
+export default abstract class BaseRouter implements InterfaceRouter {
+   public router: Router
 
-  constructor() {
-    this.router = Router();
-    this.routes();
-  }
+   abstract routes(): void
 
-  abstract routes(): void;
+   constructor() {
+      this.router = Router()
+      this.routes()
+   }
 }
-
-// TODO : setiap selesai membuat
-export default BaseRouter;

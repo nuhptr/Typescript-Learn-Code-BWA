@@ -1,73 +1,69 @@
-import { Request } from "express";
+import { Request } from "express"
 
-const db = require("../db/models");
+const db = require("../db/models")
 
-class TodoServices {
-  credential: {
-    id: number;
-  };
-  body: Request["body"];
-  params: Request["params"];
+export default class TodoServices {
+   credential: { id: number }
+   body: Request["body"]
+   params: Request["params"]
 
-  constructor(req: Request) {
-    this.credential = req.app.locals.credential;
-    this.body = req.body;
-    this.params = req.params;
-  }
+   constructor(req: Request) {
+      this.credential = req.app.locals.credential
+      this.body = req.body
+      this.params = req.params
+   }
 
-  getAll = async () => {
-    const todos = await db.todo.findAll({
-      where: { user_id: this.credential.id },
-      attributes: ["id", "description"],
-    });
+   getAll = async () => {
+      const todos = await db.todo.findAll({
+         where: { user_id: this.credential.id },
+         attributes: ["id", "description"],
+      })
 
-    return todos;
-  };
+      return todos
+   }
 
-  store = async () => {
-    const { description } = this.body;
+   store = async () => {
+      const { description } = this.body
 
-    const todos = await db.todo.create({
-      user_id: this.credential.id,
-      description,
-    });
+      const todos = await db.todo.create({
+         user_id: this.credential.id,
+         description,
+      })
 
-    return todos;
-  };
+      return todos
+   }
 
-  getOne = async () => {
-    const { id } = this.params;
+   getOne = async () => {
+      const { id } = this.params
 
-    const todo = await db.todo.findOne({
-      where: { id, user_id: this.credential.id },
-    });
+      const todo = await db.todo.findOne({
+         where: { id, user_id: this.credential.id },
+      })
 
-    return todo;
-  };
+      return todo
+   }
 
-  update = async () => {
-    const { id } = this.params;
-    const { description } = this.body;
+   update = async () => {
+      const { id } = this.params
+      const { description } = this.body
 
-    const todo = await db.todo.update(
-      { description },
-      {
-        where: { id, user_id: this.credential.id },
-      }
-    );
+      const todo = await db.todo.update(
+         { description },
+         {
+            where: { id, user_id: this.credential.id },
+         }
+      )
 
-    return todo;
-  };
+      return todo
+   }
 
-  delete = async () => {
-    const { id } = this.params;
+   delete = async () => {
+      const { id } = this.params
 
-    const todo = await db.todo.destroy({
-      where: { id, user_id: this.credential.id },
-    });
+      const todo = await db.todo.destroy({
+         where: { id, user_id: this.credential.id },
+      })
 
-    return todo;
-  };
+      return todo
+   }
 }
-
-export default TodoServices;
