@@ -1,7 +1,7 @@
 export const a = (): string => {
-    return "a";
+   return "a"
 }
 
 export const b = (): string => {
-    return "b";
+   return "b"
 }
