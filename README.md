@@ -18,4 +18,9 @@ Typescript Repository Code learn from basic until expert
 ### Typescript my learn
 
 1. [Annotation](./adi-explore/annotations/)
-2. [Type Inference](./adi-explore/type-inference/)
+2. [Type Inference](./adi-explore/inference-types/)
+3. [Any Type](./adi-explore/any-type/)
+4. [Function](./adi-explore/functions/)
+5. [Array Type](./adi-explore/arrays-types/)
+6. [Type Aliases](./adi-explore/type-aliases/)
+7. [Objects](./adi-explore/objects/)
