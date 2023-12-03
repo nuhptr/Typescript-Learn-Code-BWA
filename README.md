@@ -1,2 +1,5 @@
 # Typescript-Learn-Code
-[Mas Nusendra and Udemy] Typescript Repository Code
+
+Typescript Repository Code learn from basic until expert
+
+-
