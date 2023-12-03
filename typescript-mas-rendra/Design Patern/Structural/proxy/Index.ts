@@ -4,41 +4,39 @@
  */
 
 interface ICovid {
-  getData(): Promise<{
-    confirmed: number;
-    recovered: number;
-    deaths: number;
-  }>;
+   getData(): Promise<{
+      confirmed: number
+      recovered: number
+      deaths: number
+   }>
 }
 
 class Covid implements ICovid {
-  country: string;
+   country: string
 
-  constructor(country: string) {
-    this.country = country;
-  }
+   constructor(country: string) {
+      this.country = country
+   }
 
-  async getData(): Promise<{
-    confirmed: number;
-    recovered: number;
-    deaths: number;
-  }> {
-    const response: any = await fetch(
-      `https://covid19.mathdro.id/api/countries/${this.country}`
-    );
-    const data: any = await response.json();
+   async getData(): Promise<{
+      confirmed: number
+      recovered: number
+      deaths: number
+   }> {
+      const response: any = await fetch(`https://covid19.mathdro.id/api/countries/${this.country}`)
+      const data: any = await response.json()
 
-    return {
-      confirmed: data.confirmed.value,
-      recovered: data.recovered.value,
-      deaths: data.deaths.value,
-    };
-  }
+      return {
+         confirmed: data.confirmed.value,
+         recovered: data.recovered.value,
+         deaths: data.deaths.value,
+      }
+   }
 }
 
 const getCovid2 = async () => {
-  const covid = new Covid("id");
-  console.log(await covid.getData());
-};
+   const covid = new Covid("id")
+   console.log(await covid.getData())
+}
 
-getCovid2();
+getCovid2()

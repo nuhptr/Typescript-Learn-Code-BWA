@@ -6,86 +6,82 @@
  *    penumpang1   penumpang2
  */
 namespace Mediator {
-  interface IProduct {
-    name: string;
-    sell(): void;
-  }
+   interface IProduct {
+      name: string
+      sell(): void
+   }
 
-  interface IMediator {
-    registerProduct(product: Product): void;
-    setAvailableStatus(status: boolean): void;
-    isAvailable(): boolean;
-  }
+   interface IMediator {
+      registerProduct(product: Product): void
+      setAvailableStatus(status: boolean): void
+      isAvailable(): boolean
+   }
 
-  class Product implements IProduct {
-    name: string;
-    Mediator: IMediator;
+   class Product implements IProduct {
+      name: string
+      Mediator: IMediator
 
-    constructor(name: string, mediator: IMediator) {
-      this.name = name;
-      this.Mediator = mediator;
-    }
-
-    sell(): void {
-      if (this.Mediator.isAvailable()) {
-        this.Mediator.setAvailableStatus(false);
-        console.log(`product ${this.name} berhasil dijual`);
-      } else {
-        console.log(
-          `product ini belum dijual, harus didaftarkan terlebih dahulu`
-        );
+      constructor(name: string, mediator: IMediator) {
+         this.name = name
+         this.Mediator = mediator
       }
-    }
-  }
 
-  class ProductMediator implements IMediator {
-    product?: Product;
-    status: boolean = false;
-
-    registeredProduct(): void {
-      if (this.status) {
-        console.log(this.product);
-      } else {
-        console.log(`tidak ada product yang dijual`);
+      sell(): void {
+         if (this.Mediator.isAvailable()) {
+            this.Mediator.setAvailableStatus(false)
+            console.log(`product ${this.name} berhasil dijual`)
+         } else {
+            console.log(`product ini belum dijual, harus didaftarkan terlebih dahulu`)
+         }
       }
-    }
+   }
 
-    registerProduct(product: Product): void {
-      if (this.status) {
-        console.log(
-          "tidak bisa mendaftarkan product, karena masih ada product yang belum terjual"
-        );
-      } else {
-        this.status = true;
-        this.product = product;
-        console.log("product berhasil di daftarkkan");
+   class ProductMediator implements IMediator {
+      product?: Product
+      status: boolean = false
+
+      registeredProduct(): void {
+         if (this.status) {
+            console.log(this.product)
+         } else {
+            console.log(`tidak ada product yang dijual`)
+         }
       }
-    }
 
-    setAvailableStatus(status: boolean): void {
-      this.status = status;
-    }
+      registerProduct(product: Product): void {
+         if (this.status) {
+            console.log("tidak bisa mendaftarkan product, karena masih ada product yang belum terjual")
+         } else {
+            this.status = true
+            this.product = product
+            console.log("product berhasil di daftarkkan")
+         }
+      }
 
-    isAvailable(): boolean {
-      return this.status;
-    }
-  }
-  // execute
-  const mediator = new ProductMediator();
+      setAvailableStatus(status: boolean): void {
+         this.status = status
+      }
 
-  const product1 = new Product("sabun", mediator);
-  const product2 = new Product("sampo", mediator);
+      isAvailable(): boolean {
+         return this.status
+      }
+   }
+   // execute
+   const mediator = new ProductMediator()
 
-  mediator.registerProduct(product1);
-  mediator.registerProduct(product2);
+   const product1 = new Product("sabun", mediator)
+   const product2 = new Product("sampo", mediator)
 
-  product1.sell();
-  product2.sell();
+   mediator.registerProduct(product1)
+   mediator.registerProduct(product2)
 
-  mediator.registeredProduct();
+   product1.sell()
+   product2.sell()
 
-  mediator.registerProduct(product2);
-  mediator.registeredProduct();
-  product2.sell();
-  mediator.registeredProduct();
+   mediator.registeredProduct()
+
+   mediator.registerProduct(product2)
+   mediator.registeredProduct()
+   product2.sell()
+   mediator.registeredProduct()
 }

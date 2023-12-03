@@ -4,22 +4,22 @@
  * ada code yang logic yang complex dipisahkan ke file sendiri (service misal)
  */
 
-import Operation from "./OperationService.ts";
+import Operation from "./OperationService.ts"
 
-const calculate = () => {
-  let num1: number = 20;
-  let num2: number = 30;
+function calculate() {
+   let num1: number = 20
+   let num2: number = 30
 
-  // call other file
-  return Operation(num1, num2);
-};
+   // call other file
+   return Operation(num1, num2, "addition")
+}
 
-const calculate2 = () => {
-  let num1: number = 10;
-  let num2: number = 5;
+function calculate2() {
+   let num1: number = 10
+   let num2: number = 5
 
-  return Operation(num1, num2);
-};
+   return Operation(num1, num2, "divide")
+}
 
-console.log(calculate()); // 12.5
-console.log(calculate2()); // 3.75
+console.log(calculate()) // 50
+console.log(calculate2()) // 2

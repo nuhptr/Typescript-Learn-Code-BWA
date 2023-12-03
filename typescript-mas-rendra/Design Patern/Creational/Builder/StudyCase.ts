@@ -1,19 +1,13 @@
 class User {
-  private name: string;
-  private username: string;
-  private password: string;
+   private name: string
+   private username: string
+   private password: string
 
-  constructor(
-    name: string,
-    username: string,
-    password: string,
-    email: string,
-    address: string
-  ) {
-    this.name = name;
-    this.username = username;
-    this.password = password;
-  }
+   constructor(name: string, username: string, password: string, email: string, address: string) {
+      this.name = name
+      this.username = username
+      this.password = password
+   }
 }
 
 // TODO: bakalan ribet banget ngubah satu-satu di file manapun

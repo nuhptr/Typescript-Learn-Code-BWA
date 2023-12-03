@@ -1,10 +1,24 @@
 // Logic File
-const operation = (num1: number, num2: number): number => {
-  const operation1 = num1 + num2;
-  const operation2 = operation1 / 100;
-  const operation3 = operation2 * 25;
+export default function Operation(num1: number, num2: number, operation: string): number {
+   let result: number = 0
 
-  return operation3;
-};
+   switch (operation) {
+      case "addition":
+         result = num1 + num2
+         break
+      case "subtraction":
+         result = num1 - num2
+         break
+      case "multiply":
+         result = num1 * num2
+         break
+      case "divide":
+         result = num1 / num2
+         break
+      default:
+         console.log("Operation not found")
+         break
+   }
 
-export default operation;
+   return result
+}

@@ -26,22 +26,17 @@ Computer
 
 // TODO: yang ribet untuk dikerjakan
 class Category {
-  name: string;
-  children: any[] = [];
+   name: string
+   children: any[] = []
 
-  constructor(name: string) {
-    this.name = name;
-  }
+   constructor(name: string) {
+      this.name = name
+   }
 }
 
-const computer = new Category("Computer");
-console.log(computer);
+const computer = new Category("Computer")
+console.log(computer)
 
-computer.children = [
-  (new Category("PC").children = [
-    new Category("case"),
-    new Category("Motherboard"),
-  ]),
-];
+computer.children = [(new Category("PC").children = [new Category("case"), new Category("Motherboard")])]
 
-console.log(computer);
+console.log(computer)

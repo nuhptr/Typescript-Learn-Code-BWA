@@ -1,25 +1,25 @@
 class Truck {
-  private qty: number;
+   private qty: number
 
-  constructor(qty: number) {
-    this.qty = qty;
-  }
+   constructor(qty: number) {
+      this.qty = qty
+   }
 
-  deliver(): void {
-    console.log(`kirim ${this.qty} menggunakan truk`);
-  }
+   deliver(): void {
+      console.log(`kirim ${this.qty} menggunakan truk`)
+   }
 }
 
 class Ship {
-  private qty: number;
+   private qty: number
 
-  constructor(qty: number) {
-    this.qty = qty;
-  }
+   constructor(qty: number) {
+      this.qty = qty
+   }
 
-  deliver(): void {
-    console.log(`kirim ${this.qty} menggunakan Ship`);
-  }
+   deliver(): void {
+      console.log(`kirim ${this.qty} menggunakan Ship`)
+   }
 }
 
 /** yang jadi masalah adalah yang awalnya truck harus kita rubah kodingan kita
@@ -28,10 +28,10 @@ class Ship {
  * tidak maintable
  */
 
-let type = "deliver_by_land";
+let type = "deliver_by_land"
 if (type === "deliver_by_land") {
-  new Truck(100);
+   new Truck(100)
 } else if (type === "deliver_by_sea") {
-  new Ship(100);
+   new Ship(100)
 }
 // dan seterusnya sampai banyaknya method
