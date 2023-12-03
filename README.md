@@ -24,3 +24,6 @@ Typescript Repository Code learn from basic until expert
 5. [Array Type](./adi-explore/arrays-types/)
 6. [Type Aliases](./adi-explore/type-aliases/)
 7. [Objects](./adi-explore/objects/)
+8. [Intersection Types](./adi-explore/intersection-types/)
+9. [Unions](./adi-explore/unions/)
+10.   [Literal Types](./adi-explore/literal-types/)
