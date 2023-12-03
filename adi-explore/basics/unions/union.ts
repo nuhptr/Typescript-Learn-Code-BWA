@@ -12,7 +12,7 @@ interface MyInterface {
 type UserInfo = { name: string; age: number; address: string }
 type AccountDetails = { email: string; password: string }
 
-let user: UserInfo | AccountDetails = {
+let userImportant: UserInfo | AccountDetails = {
    email: "someone@gmail.com",
    password: "password123",
    name: "someone",

@@ -6,9 +6,9 @@ const person: { name: string; lastName: string; age: number } = {
 
 console.log(`Name: ${person.name} ${person.lastName} - Age: ${person.age}`)
 
-type Person = { name: string; lastName: string; age: number }
+type PersonAmazing = { name: string; lastName: string; age: number }
 
-function printUser(): Person {
+function printUser(): PersonAmazing {
    return { name: "Adriano", lastName: "Mota", age: 33 }
 }
 
