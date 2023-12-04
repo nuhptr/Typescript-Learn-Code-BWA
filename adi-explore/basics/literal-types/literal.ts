@@ -1,5 +1,5 @@
 let color2: "red" | "green" | "blue"
-color = "red"
+color2 = "red"
 // color = "yellow" // Error: Type '"yellow"' is not assignable to type '"red" | "green" | "blue"'.
 
 let number: 1 | 2 | 3 | 4 | 5
