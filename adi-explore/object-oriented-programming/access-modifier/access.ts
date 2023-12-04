@@ -26,7 +26,7 @@ class Animal {
    }
 }
 
-class Dog extends Animal {
+class NewDog extends Animal {
    constructor(name: string, age: number) {
       super(name, age, "Husky")
    }
@@ -36,5 +36,5 @@ class Dog extends Animal {
    }
 }
 
-const husky = new Dog("Husky", 2)
+const husky = new NewDog("Husky", 2)
 console.log(husky.getInfo()) // Name: Husky, Age: 2, Species: Husky
