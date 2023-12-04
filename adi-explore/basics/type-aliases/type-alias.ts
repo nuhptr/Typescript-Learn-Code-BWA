@@ -1,8 +1,8 @@
-type Car = { name: string; year: number }
+type CarType = { name: string; year: number }
 
-function printCar(car: Car) {
+function printCar(car: CarType) {
    console.log(car.name, car.year)
 }
 
-const myCar: Car = { name: "Ford", year: 2000 }
+const myCar: CarType = { name: "Ford", year: 2000 }
 printCar(myCar)
