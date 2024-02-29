@@ -6,6 +6,12 @@
 -  [winston](https://www.npmjs.com/package/winston) - pnpm add winston (Logger)
 -  [uuid](https://www.npmjs.com/package/uuid) - pnpm add uuid (Unique ID) : `not longer used`
 -  [@types/uuid](https://www.npmjs.com/package/@types/uuid) - pnpm add @types/uuid (Unique ID) : `not longer used`
+-  [typescript](https://www.typescriptlang.org/) - pnpm add typescript (Typescript)
+   -> npx tsc --init
+   -> ubah "module" menjadi "commonjs"
+   -> ubah "outDir" menjadi "./dist"
+   -> ubah "moduleResolution" menjadi "node"
+   -> tambahkan include `src/**/*`
 
 ## Testing Dependencies
 
