@@ -11,7 +11,7 @@
    -> ubah "module" menjadi "commonjs"
    -> ubah "outDir" menjadi "./dist"
    -> ubah "moduleResolution" menjadi "node"
-   -> tambahkan include `src/**/*`
+   -> tambahkan `"include": ["src/**/*"],` dipaling atas
 
 ## Testing Dependencies
 
