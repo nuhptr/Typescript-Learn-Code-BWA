@@ -137,26 +137,52 @@ Response Body (Failed):
 
 ## Search Contact
 
-Endpoint: `POST` /api/contacts
+Endpoint: `GET` /api/contacts
+
+Query Parameter:
+
+-  name: string, contact first name or contact last name, optional
+-  phone: string, contact phone, optional
+-  email: string, contact email, optional
+-  page: number, default 1
+-  size: number, default 10
 
 Request Header:
 
 -  X-API-TOKEN: token(uuid)
 
-Request Body:
-
-```json
-{}
-```
-
 Response Body (Success):
 
 ```json
-{}
+{
+   "data": [
+      {
+         "id": 1,
+         "first_name": "Adi",
+         "last_name": "Nugraha Putra",
+         "email": "jujustsuthecode@gmail.com",
+         "phone": "081234567890"
+      },
+      {
+         "id": 2,
+         "first_name": "Adi",
+         "last_name": "Nugraha Putra",
+         "email": "jujustsuthecode@gmail.com",
+         "phone": "081234567890"
+      }
+   ],
+   "paging": {
+      "current_page": 1,
+      "total_page": 10,
+      "size": 10
+   }
+}
 ```
 
 Response Body (Failed):
 
 ```json
-{}
+{
+   "errors": "Unauthorized, ..."
+}
 ```
