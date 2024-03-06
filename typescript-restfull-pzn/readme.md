@@ -7,11 +7,11 @@
 -  [uuid](https://www.npmjs.com/package/uuid) - pnpm add uuid (Unique ID) : `not longer used`
 -  [@types/uuid](https://www.npmjs.com/package/@types/uuid) - pnpm add @types/uuid (Unique ID) : `not longer used`
 -  [typescript](https://www.typescriptlang.org/) - pnpm add typescript (Typescript)
-   -> npx tsc --init
-   -> ubah "module" menjadi "commonjs"
-   -> ubah "outDir" menjadi "./dist"
-   -> ubah "moduleResolution" menjadi "node"
-   -> tambahkan `"include": ["src/**/*"],` dipaling atas
+   -- npx tsc --init
+   -- ubah "module" menjadi "commonjs"
+   -- ubah "outDir" menjadi "./dist"
+   -- ubah "moduleResolution" menjadi "node"
+   -- tambahkan `"include": ["src/**/*"],` dipaling atas
 
 ## Testing Dependencies
 
@@ -55,6 +55,19 @@ also script :
 ## Database ORM
 
 -  [prisma](https://www.prisma.io/) - pnpm add prisma
+-  [@prisma/client](https://www.npmjs.com/package/@prisma/client) - pnpm add @prisma/client (auto generated client for prisma)
+-  npx prisma init
+-  Schema User, Contact, Address
+
+   ```json
+   {
+      "scripts": {
+         "prisma:generate": "npx prisma generate",
+         "prisma:migrate": "npx prisma migrate dev",
+         "prisma:studio": "npx prisma studio"
+      }
+   }
+   ```
 
 ## Password Security
 
