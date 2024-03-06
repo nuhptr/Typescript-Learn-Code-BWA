@@ -58,7 +58,7 @@ and many more to create a restfull api using typescript and nodejs with express
 # Configuration Typescript Project
 
 ```bash
-npm init (if you don't have package.json)
+npm init -y (if you don't have package.json)
 pnpm add typescript -D
 npx tsc --init
 ```
@@ -111,3 +111,62 @@ npx tsc --init
 -  [bcrypt](https://www.npmjs.com/package/bcrypt) - pnpm add bcrypt (A library to help you hash passwords.)
 -  [express-validator](https://www.npmjs.com/package/express-validator) - pnpm add express-validator (An express.js middleware for validator)
 -  [jsonwebtoken](https://www.npmjs.com/package/jsonwebtoken) - pnpm add jsonwebtoken (An implementation of JSON Web Tokens)
+
+# Setup Sequelize ORM
+
+-  Add Dependencies
+
+```bash
+pnpm add mysql2 sequelize sequelize-cli
+```
+
+-  Add .sequelizerc in project
+
+```javascript
+// .sequelizerc
+const path = require("path")
+require("dotenv").config()
+
+if (process.env.NODE_ENV == "development") {
+   module.exports = {
+      config: path.resolve("src/config", "database.js"),
+      "models-path": path.resolve("src/db", "models"),
+      "seeders-path": path.resolve("src/db", "seeders"),
+      "migrations-path": path.resolve("src/db", "migrations"),
+   }
+} else {
+   module.exports = {
+      config: path.resolve("build/config", "database.js"),
+      "models-path": path.resolve("build/db", "models"),
+      "seeders-path": path.resolve("build/db", "seeders"),
+      "migrations-path": path.resolve("build/db", "migrations"),
+   }
+}
+```
+
+-  Init sequelize-cli
+
+```bash
+npx sequelize-cli init
+```
+
+-  Create model dan migrate
+
+```bash
+npx sequelize-cli model:generate --name user --attributes username:string,password:string --underscored
+```
+
+-  Migrate database to MySql
+
+```bash
+npx sequelize-cli db:migrate
+# untuk membalikan migrasi
+npx sequelize-cli db:undo
+```
+
+-  Add Development Dependencies
+
+```bash
+pnpm add @types/validator -D
+pnpm add @types/bluebird -D
+```
