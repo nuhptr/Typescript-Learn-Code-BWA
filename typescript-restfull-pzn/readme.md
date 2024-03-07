@@ -9,9 +9,10 @@
 -  [typescript](https://www.typescriptlang.org/) - pnpm add typescript (Typescript)
    -- npx tsc --init
    -- ubah "module" menjadi "commonjs"
+   -- ubah "types": ["jest"] / library test lainnya
    -- ubah "outDir" menjadi "./dist"
    -- ubah "moduleResolution" menjadi "node"
-   -- tambahkan `"include": ["src/**/*"],` dipaling atas
+   -- tambahkan `"include": ["src/**/*", "test/**/*"],` dipaling atas
 
 ## Testing Dependencies
 
