@@ -100,7 +100,7 @@ Response Body (Failed):
 
 ## Update User
 
-Endpoint: `PATCH` /api/users/current
+Endpoint: `PATCH` /api/users/current -> patch is partial update (tidak wajib)
 
 Request Header:
 
