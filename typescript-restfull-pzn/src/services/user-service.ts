@@ -42,12 +42,12 @@ export class UserService {
    static async login(request: LoginUserRequest): Promise<UserResponse> {
       const loginRequest = Validation.validate(UserValidation.LOGIN, request)
 
+      // find user by username (unique identifier)
       let user = await prismaClient.user.findUnique({
          where: {
             username: loginRequest.username,
          },
       })
-
       if (!user) {
          throw new ResponseError(401, "Username or password is wrong!")
       }
