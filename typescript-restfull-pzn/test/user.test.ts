@@ -189,4 +189,23 @@ describe("DELETE /api/users/current", () => {
       // delete user
       await UserTest.delete()
    })
+
+   it("should be able to logout", async () => {
+      const response = await supertest(web).delete("/api/users/current").set("X-API-TOKEN", "test")
+
+      logger.debug(response.body)
+      expect(response.status).toBe(200)
+      expect(response.body.data).toBe("OK")
+
+      const user = await UserTest.get()
+      expect(user.token).toBeNull()
+   })
+
+   it("should reject logout if token is wrong", async () => {
+      const response = await supertest(web).delete("/api/users/current").set("X-API-TOKEN", "wrong")
+
+      logger.debug(response.body)
+      expect(response.status).toBe(401)
+      expect(response.body.errors).toBeDefined()
+   })
 })
