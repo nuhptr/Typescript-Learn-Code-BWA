@@ -1,8 +1,8 @@
 import supertest from "supertest"
 import bcrypt from "bcrypt"
 
-import { web } from "../src/application/web"
-import { logger } from "../src/application/logging"
+import { web } from "@/application/web"
+import { logger } from "@/application/logging"
 import { UserTest } from "./test-util"
 
 // Register Test
