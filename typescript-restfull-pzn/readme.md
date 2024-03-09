@@ -14,6 +14,8 @@
    -- ubah "outDir" menjadi "./dist"
    -- ubah "moduleResolution" menjadi "node"
    -- tambahkan `"include": ["src/**/*", "test/**/*"],` dipaling atas
+   -- `"baseUrl": "./src"`
+   -- `"paths": { "@/*": ["*"] }`
 
 ## Testing Dependencies
 
@@ -31,11 +33,17 @@ Then add script :
 ```json
 {
    "scripts": {
-      "test": "jest"
+      "test": "jest",
+      "test:user": "jest user.test.ts",
+      "test:contact": "jest contact.test.ts"
    },
    "jest": {
       "transform": {
          "^.+\\.[t|j]sx?$": "babel-jest"
+      },
+      "moduleDirectories": ["node_modules", "src"],
+      "moduleNameMapper": {
+         "@/(.*)": "<rootDir>/src/$1"
       }
    }
 }
