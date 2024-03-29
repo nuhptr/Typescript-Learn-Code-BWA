@@ -1,8 +1,8 @@
 enum WeatherCondition {
-   Sunny = "Sunny",
-   Rainy = "Rainy",
-   Cloudy = "Cloudy",
-   Snowy = "Snowy",
+    Sunny = "Sunny",
+    Rainy = "Rainy",
+    Cloudy = "Cloudy",
+    Snowy = "Snowy",
 }
 
 const currentWeather = WeatherCondition.Sunny

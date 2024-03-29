@@ -4,10 +4,10 @@ type Managers = { department: string; role: string }
 type ManagerWithEmployee = Employees & Managers
 
 const manager: ManagerWithEmployee = {
-   id: 1,
-   name: "John",
-   department: "Sales",
-   role: "Manager",
+    id: 1,
+    name: "John",
+    department: "Sales",
+    role: "Manager",
 }
 
 console.log(manager.id)

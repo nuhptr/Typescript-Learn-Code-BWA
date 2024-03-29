@@ -1,6 +1,12 @@
-type Person = { name: string; age: number }
+type Person = {
+    name: string
+    age: number
+}
 
-type Employee = { company: string; salary?: number }
+type Employee = {
+    company: string
+    salary?: number
+}
 
 type Programmer = Person & Employee
 

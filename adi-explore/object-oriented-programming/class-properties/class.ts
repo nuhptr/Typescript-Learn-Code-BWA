@@ -1,11 +1,11 @@
 class NewPerson {
-   name: string
-   age: number
+    name: string
+    age: number
 
-   constructor(name: string, age: number) {
-      this.name = name
-      this.age = age
-   }
+    constructor(name: string, age: number) {
+        this.name = name
+        this.age = age
+    }
 }
 
 const newPerson = new NewPerson("Aditya", 21)

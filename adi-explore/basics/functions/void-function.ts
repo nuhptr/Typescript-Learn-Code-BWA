@@ -1,5 +1,5 @@
 function printMessage(message: string): void {
-   console.log(`This is my ${message}`)
+    console.log(`This is my ${message}`)
 }
 
 printMessage("Hello, world!")
