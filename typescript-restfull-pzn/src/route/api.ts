@@ -16,3 +16,5 @@ apiRouter.delete("/api/users/current", UserController.logout)
 apiRouter.post("/api/contacts", ContactController.create)
 // :contactId(\\d+) is a regex to ensure contactId is a number
 apiRouter.get("/api/contacts/:contactId(\\d+)", ContactController.get)
+apiRouter.put("/api/contacts/:contactId(\\d+)", ContactController.update)
+apiRouter.delete("/api/contacts/:contactId(\\d+)", ContactController.remove)
