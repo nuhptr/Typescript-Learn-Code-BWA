@@ -6,31 +6,31 @@
 import { User } from "@prisma/client"
 
 export type UserResponse = {
-   name: string
-   username: string
-   token?: string
+    name: string
+    username: string
+    token?: string
 }
 
 export type CreateUserRequest = {
-   name: string
-   username: string
-   password: string
+    name: string
+    username: string
+    password: string
 }
 
 export type LoginUserRequest = {
-   username: string
-   password: string
+    username: string
+    password: string
 }
 
 // type for update user
 export type UpdateUserRequest = {
-   name?: string
-   password?: string
+    name?: string
+    password?: string
 }
 
 export function toUserResponse(user: User): UserResponse {
-   return {
-      name: user.name,
-      username: user.username,
-   }
+    return {
+        name: user.name,
+        username: user.username,
+    }
 }
