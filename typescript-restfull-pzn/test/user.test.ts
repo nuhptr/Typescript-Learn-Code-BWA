@@ -5,7 +5,7 @@ import { web } from "@/application/web"
 import { logger } from "@/application/logging"
 import { UserTest } from "./test-util"
 
-// Register Test
+// Register Test (public api) => DONE TEST ✅
 describe("POST /api/users", () => {
     // Clean up database after each test
     afterEach(async () => {
@@ -40,7 +40,7 @@ describe("POST /api/users", () => {
     })
 })
 
-// Login Test
+// Login Test (public api) => DONE TEST ✅
 describe("POST /api/users/login", () => {
     beforeEach(async () => {
         // create user before start test
@@ -91,7 +91,7 @@ describe("POST /api/users/login", () => {
     })
 })
 
-// GET USER
+// GET USER (private api) => DONE TEST ✅
 describe("GET /api/users", () => {
     beforeEach(async () => {
         // create user before start test
@@ -121,7 +121,7 @@ describe("GET /api/users", () => {
     })
 })
 
-// UPDATE USER
+// UPDATE USER (private api) => DONE TEST ✅
 describe("PATCH /api/users/current", () => {
     beforeEach(async () => {
         // create user before start test
@@ -190,7 +190,7 @@ describe("PATCH /api/users/current", () => {
     })
 })
 
-// LOGOUT USER
+// LOGOUT USER => DONE TEST ✅
 describe("DELETE /api/users/current", () => {
     beforeEach(async () => {
         // create user before start test

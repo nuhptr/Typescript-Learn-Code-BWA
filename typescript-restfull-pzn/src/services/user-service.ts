@@ -2,20 +2,21 @@ import bcrypt from "bcrypt"
 import { v4 as uuid } from "uuid"
 import { User } from "@prisma/client"
 
-import { prismaClient } from "../application/database"
-import { ResponseError } from "../error/response-error"
+import { prismaClient } from "@/application/database"
+import { ResponseError } from "@/error/response-error"
 import {
     CreateUserRequest,
     LoginUserRequest,
     UpdateUserRequest,
     UserResponse,
     toUserResponse,
-} from "../model/user-model"
-import { UserValidation } from "../validation/user-validation"
-import { Validation } from "../validation/validation"
+} from "@/model/user-model"
+
+import { UserValidation } from "@/validation/user-validation"
+import { Validation } from "@/validation/validation"
 
 export class UserService {
-    // register user (public api)
+    // TODO: REGISTER USER (public api)
     static async register(request: CreateUserRequest): Promise<UserResponse> {
         const registerRequest = Validation.validate(UserValidation.REGISTER, request)
 
@@ -38,7 +39,7 @@ export class UserService {
         return toUserResponse(user)
     }
 
-    // login user (public api)
+    // TODO: LOGIN USER (public api)
     static async login(request: LoginUserRequest): Promise<UserResponse> {
         const loginRequest = Validation.validate(UserValidation.LOGIN, request)
 
@@ -48,11 +49,13 @@ export class UserService {
                 username: loginRequest.username,
             },
         })
+
         if (!user) {
             throw new ResponseError(401, "Username or password is wrong!")
         }
 
         const passwordIsValid = await bcrypt.compare(loginRequest.password, user.password)
+
         if (!passwordIsValid) {
             throw new ResponseError(401, "Username or password is wrong!")
         }
@@ -71,12 +74,12 @@ export class UserService {
         return response
     }
 
-    // get user (login first)
+    // TODO: GET USER (private api)
     static async get(user: User): Promise<UserResponse> {
         return toUserResponse(user)
     }
 
-    // update user
+    // TODO: UPDATE USER (private api)
     static async update(user: User, request: UpdateUserRequest): Promise<UserResponse> {
         const updateRequest = Validation.validate(UserValidation.UPDATE, request)
 
@@ -98,7 +101,7 @@ export class UserService {
         return toUserResponse(result)
     }
 
-    // logout user
+    // TODO: LOGOUT USER
     static async logout(user: User): Promise<UserResponse> {
         const result = await prismaClient.user.update({
             where: {
