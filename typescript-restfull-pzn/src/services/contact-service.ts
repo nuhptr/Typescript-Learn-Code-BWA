@@ -1,5 +1,6 @@
 import { Contact, User } from "@prisma/client"
 
+import { prismaClient } from "@/application/database"
 import {
     ContactResponse,
     toContactResponse,
@@ -7,13 +8,14 @@ import {
     UpdateContactRequest,
     SearchContactRequest,
 } from "@/model/contact-model"
-import { ContactValidation } from "@/validation/contact-validation"
-import { Validation } from "@/validation/validation"
-import { prismaClient } from "@/application/database"
-import { ResponseError } from "@/error/response-error"
 import { Pageable } from "@/model/page"
 
+import { ContactValidation } from "@/validation/contact-validation"
+import { Validation } from "@/validation/validation"
+import { ResponseError } from "@/error/response-error"
+
 export class ContactService {
+    // TODO: CREATE SERVICE (private api)
     static async create(user: User, request: CreateContactRequest): Promise<ContactResponse> {
         const createRequest = Validation.validate(ContactValidation.CREATE, request)
 
@@ -29,24 +31,27 @@ export class ContactService {
         return toContactResponse(contact)
     }
 
-    // TODO: reusable function
+    // TODO: REUSABLE FUNCTION
     static async checkContactMustExist(username: string, contactId: number): Promise<Contact> {
         const contact = await prismaClient.contact.findUnique({
-            where: { id: contactId, username: username },
+            where: {
+                id: contactId,
+                username: username,
+            },
         })
 
-        if (!contact) {
-            throw new ResponseError(404, "Contact not found")
-        }
+        if (!contact) throw new ResponseError(404, "Contact not found")
 
         return contact
     }
 
+    // TODO: GET SERVICE (private api)
     static async get(user: User, id: number): Promise<ContactResponse> {
         const contact = await this.checkContactMustExist(user.username, id)
         return toContactResponse(contact)
     }
 
+    // TODO: UPDATE SERVICE (private api)
     static async update(user: User, request: UpdateContactRequest): Promise<ContactResponse> {
         const updateRequest = Validation.validate(ContactValidation.UPDATE, request)
         await this.checkContactMustExist(user.username, updateRequest.id)
@@ -62,6 +67,7 @@ export class ContactService {
         return toContactResponse(contact)
     }
 
+    // TODO: REMOVE SERVICE (private api)
     static async remove(user: User, id: number): Promise<ContactResponse> {
         const contact = await this.checkContactMustExist(user.username, id)
         await prismaClient.contact.delete({
@@ -74,17 +80,48 @@ export class ContactService {
         return toContactResponse(contact)
     }
 
+    // TODO: SEARCH SERVICE (private api)
     static async search(
         user: User,
         request: SearchContactRequest
     ): Promise<Pageable<ContactResponse>> {
-        const searchRequest = Validation.validate(ContactValidation.SEARCH, request)
-        const skip = (searchRequest.page - 1) * searchRequest.size
+        const searchRequest = Validation.validate<SearchContactRequest>(
+            ContactValidation.SEARCH,
+            request
+        )
+        const skip = (searchRequest.page - 1) * searchRequest.size // 0 * 10 = 0, 1 * 10 = 10
 
         const filters = []
-        // check if name exists
-        // check if email exists
-        // check if phone exists
+
+        //* Check if name (first_name / last_name) exists
+        if (searchRequest.name) {
+            filters.push({
+                OR: [
+                    {
+                        first_name: {
+                            contains: searchRequest.name,
+                        },
+                    },
+                    {
+                        last_name: {
+                            contains: searchRequest.name,
+                        },
+                    },
+                ],
+            })
+        }
+        //* Check if email exists
+        if (searchRequest.email) {
+            filters.push({
+                email: { contains: searchRequest.email },
+            })
+        }
+        //* check if phone exists
+        if (searchRequest.phone) {
+            filters.push({
+                phone: { contains: searchRequest.phone },
+            })
+        }
 
         const contacts = await prismaClient.contact.findMany({
             where: {
@@ -106,7 +143,7 @@ export class ContactService {
             data: contacts.map((contact) => toContactResponse(contact)),
             paging: {
                 current_page: searchRequest.page,
-                total_page: Math.ceil(total / searchRequest.size),
+                total_page: Math.ceil(total / searchRequest.size), //* ceil: 1.5 => 2
                 size: searchRequest.size,
             },
         }

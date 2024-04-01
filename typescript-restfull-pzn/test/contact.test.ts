@@ -1,10 +1,11 @@
 import supertest from "supertest"
 
 import { web } from "@/application/web"
-import { ContactTest, UserTest } from "./test-util"
 import { logger } from "@/application/logging"
 
-// POST /api/contacts
+import { ContactTest, UserTest } from "./test-util"
+
+// POST /api/contacts (private api) => DONE TEST ✅
 describe("POST /api/contacts", () => {
     beforeEach(async () => {
         await UserTest.create()
@@ -52,7 +53,7 @@ describe("POST /api/contacts", () => {
     })
 })
 
-// GET /api/contacts/:contactId
+// GET /api/contacts/:contactId (private api) => DONE TEST ✅
 describe("GET /api/contacts/:contactId", () => {
     beforeEach(async () => {
         await UserTest.create()
@@ -91,7 +92,7 @@ describe("GET /api/contacts/:contactId", () => {
     })
 })
 
-// PUT /api/contacts/:contactId
+// PUT /api/contacts/:contactId (private api) => DONE TEST ✅
 describe("PUT /api/contacts/:contactId", () => {
     beforeEach(async () => {
         await UserTest.create()
@@ -142,19 +143,19 @@ describe("PUT /api/contacts/:contactId", () => {
     })
 })
 
-// DELETE /api/contacts/:contactId
+// DELETE /api/contacts/:contactId (private api) => DONE TEST ✅
 describe("DELETE /api/contacts/:contactId", () => {
-    beforeEach(async () => {
+    beforeEach(async function () {
         await UserTest.create()
         await ContactTest.create()
     })
 
-    afterEach(async () => {
+    afterEach(async function () {
         await UserTest.delete()
         await ContactTest.deleteAll()
     })
 
-    it("should be able delete contact", async () => {
+    it("should be able remove contact", async () => {
         const contact = await ContactTest.get()
         const response = await supertest(web)
             .delete(`/api/contacts/${contact.id}`)
@@ -165,7 +166,7 @@ describe("DELETE /api/contacts/:contactId", () => {
         expect(response.body.data).toBe("OK")
     })
 
-    it("should reject delete contact if contact is not found", async () => {
+    it("should reject remove contact if contact is not found", async () => {
         const contact = await ContactTest.get()
         const response = await supertest(web)
             .delete(`/api/contacts/${contact.id + 1}`)
@@ -174,5 +175,99 @@ describe("DELETE /api/contacts/:contactId", () => {
         logger.debug(response.body)
         expect(response.status).toBe(404)
         expect(response.body.errors).toBeDefined()
+    })
+})
+
+// GET /api/contacts for search by name / email / phone (private api) => DONE TEST ✅
+describe("GET /api/contacts", () => {
+    beforeEach(async function () {
+        await UserTest.create()
+        await ContactTest.create()
+    })
+
+    afterEach(async function () {
+        await ContactTest.deleteAll()
+        await UserTest.delete()
+    })
+
+    it("Should be able to search contact", async () => {
+        const response = await supertest(web).get("/api/contacts").set("X-API-TOKEN", "test")
+
+        logger.debug(response.body)
+        expect(response.status).toBe(200)
+        expect(response.body.data.length).toBe(1)
+        expect(response.body.paging.current_page).toBe(1)
+        expect(response.body.paging.total_page).toBe(1)
+        expect(response.body.paging.size).toBe(10)
+    })
+
+    it("Should be able to search contact using name", async () => {
+        const response = await supertest(web)
+            .get("/api/contacts")
+            .query({ name: "tes" })
+            .set("X-API-TOKEN", "test")
+
+        logger.debug(response.body)
+        expect(response.status).toBe(200)
+        expect(response.body.data.length).toBe(1)
+        expect(response.body.paging.current_page).toBe(1)
+        expect(response.body.paging.total_page).toBe(1)
+        expect(response.body.paging.size).toBe(10)
+    })
+
+    it("Should be able to search contact using email", async () => {
+        const response = await supertest(web)
+            .get("/api/contacts")
+            .query({ email: ".com" })
+            .set("X-API-TOKEN", "test")
+
+        logger.debug(response.body)
+        expect(response.status).toBe(200)
+        expect(response.body.data.length).toBe(1)
+        expect(response.body.paging.current_page).toBe(1)
+        expect(response.body.paging.total_page).toBe(1)
+        expect(response.body.paging.size).toBe(10)
+    })
+
+    it("Should be able to search contact using phone", async () => {
+        const response = await supertest(web)
+            .get("/api/contacts")
+            .query({ phone: "9999" })
+            .set("X-API-TOKEN", "test")
+
+        logger.debug(response.body)
+        expect(response.status).toBe(200)
+        expect(response.body.data.length).toBe(1)
+        expect(response.body.paging.current_page).toBe(1)
+        expect(response.body.paging.total_page).toBe(1)
+        expect(response.body.paging.size).toBe(10)
+    })
+
+    it("Should be able to search contact no result", async () => {
+        const response = await supertest(web)
+            .get("/api/contacts")
+            .query({ name: "salah" })
+            .set("X-API-TOKEN", "test")
+
+        logger.debug(response.body)
+        expect(response.status).toBe(200)
+        expect(response.body.data.length).toBe(0) // No result
+        expect(response.body.paging.current_page).toBe(1)
+        expect(response.body.paging.total_page).toBe(0) // No result
+        expect(response.body.paging.size).toBe(10)
+    })
+
+    it("Should be able to search contact with paging", async () => {
+        const response = await supertest(web)
+            .get("/api/contacts")
+            .query({ page: 2, size: 1 })
+            .set("X-API-TOKEN", "test")
+
+        logger.debug(response.body)
+        expect(response.status).toBe(200)
+        expect(response.body.data.length).toBe(0) // data is empty
+        expect(response.body.paging.current_page).toBe(2)
+        expect(response.body.paging.total_page).toBe(1) // total 1 page
+        expect(response.body.paging.size).toBe(1) // 1 data per page
     })
 })
