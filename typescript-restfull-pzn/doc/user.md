@@ -13,9 +13,9 @@ Request Body:
 
 ```json
 {
-   "username": "nuhptr",
-   "password": "rahasia",
-   "name": "Adi Nugraha Putra"
+    "username": "nuhptr",
+    "password": "rahasia",
+    "name": "Adi Nugraha Putra"
 }
 ```
 
@@ -23,10 +23,10 @@ Response Body (Success):
 
 ```json
 {
-   "data": {
-      "username": "nuhptr",
-      "name": "Adi Nugraha Putra"
-   }
+    "data": {
+        "username": "nuhptr",
+        "name": "Adi Nugraha Putra"
+    }
 }
 ```
 
@@ -34,7 +34,7 @@ Response Body (Failed):
 
 ```json
 {
-   "error": "Username must not blank..."
+    "error": "Username must not blank..."
 }
 ```
 
@@ -46,8 +46,8 @@ Request Body:
 
 ```json
 {
-   "name": "Adi Nugraha Putra",
-   "password": "rahasia"
+    "name": "Adi Nugraha Putra",
+    "password": "rahasia"
 }
 ```
 
@@ -55,11 +55,11 @@ Response Body (Success):
 
 ```json
 {
-   "data": {
-      "username": "nuhptr",
-      "name": "Adi Nugraha Putra",
-      "token": "uuid"
-   }
+    "data": {
+        "username": "nuhptr",
+        "name": "Adi Nugraha Putra",
+        "token": "uuid"
+    }
 }
 ```
 
@@ -67,7 +67,7 @@ Response Body (Failed):
 
 ```json
 {
-   "error": "Username or password is wrong..."
+    "error": "Username or password is wrong..."
 }
 ```
 
@@ -77,16 +77,16 @@ Endpoint: `GET` /api/users/current
 
 Request Header:
 
--  X-API-TOKEN: token(uuid)
+-   X-API-TOKEN: token(uuid)
 
 Response Body (Success):
 
 ```json
 {
-   "data": {
-      "username": "nuhptr",
-      "name": "Adi Nugraha Putra"
-   }
+    "data": {
+        "username": "nuhptr",
+        "name": "Adi Nugraha Putra"
+    }
 }
 ```
 
@@ -94,7 +94,7 @@ Response Body (Failed):
 
 ```json
 {
-   "errors": "Unauthorized, ..."
+    "errors": "Unauthorized, ..."
 }
 ```
 
@@ -104,14 +104,14 @@ Endpoint: `PATCH` /api/users/current -> patch is partial update (tidak wajib)
 
 Request Header:
 
--  X-API-TOKEN: token(uuid)
+-   X-API-TOKEN: token(uuid)
 
 Request Body:
 
 ```json
 {
-   "password": "rahasia", // tidak wajib
-   "name": "Adi Nugraha Putra" // tidak wajib
+    "password": "rahasia", // tidak wajib
+    "name": "Adi Nugraha Putra" // tidak wajib
 }
 ```
 
@@ -119,10 +119,10 @@ Response Body (Success):
 
 ```json
 {
-   "data": {
-      "username": "nuhptr",
-      "name": "Adi Nugraha Putra"
-   }
+    "data": {
+        "username": "nuhptr",
+        "name": "Adi Nugraha Putra"
+    }
 }
 ```
 
@@ -130,7 +130,7 @@ Response Body (Failed):
 
 ```json
 {
-   "error": "Unauthorized..."
+    "error": "Unauthorized..."
 }
 ```
 
@@ -140,13 +140,13 @@ Endpoint: `DELETE` /api/users/current
 
 Request Header:
 
--  X-API-TOKEN: token(uuid)
+-   X-API-TOKEN: token(uuid)
 
 Response Body (Success):
 
 ```json
 {
-   "data": "OK"
+    "data": "OK"
 }
 ```
 
@@ -154,6 +154,6 @@ Response Body (Failed):
 
 ```json
 {
-   "error": "Unauthorized..."
+    "error": "Unauthorized..."
 }
 ```

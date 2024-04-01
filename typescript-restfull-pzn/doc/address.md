@@ -11,17 +11,17 @@ Endpoint: `POST` /api/contacts/:idContact/addresses
 
 Request Header:
 
--  X-API-TOKEN: token(uuid)
+-   X-API-TOKEN: token(uuid)
 
 Request Body:
 
 ```json
 {
-   "street": "Jl. Kebon Jeruk",
-   "city": "Jakarta Barat",
-   "province": "DKI Jakarta",
-   "country": "Indonesia",
-   "postal_code": "11530"
+    "street": "Jl. Kebon Jeruk",
+    "city": "Jakarta Barat",
+    "province": "DKI Jakarta",
+    "country": "Indonesia",
+    "postal_code": "11530"
 }
 ```
 
@@ -29,14 +29,14 @@ Response Body (success):
 
 ```json
 {
-   "data": {
-      "id": 1,
-      "street": "Jl. Kebon Jeruk",
-      "city": "Jakarta Barat",
-      "province": "DKI Jakarta",
-      "country": "Indonesia",
-      "postal_code": "11530"
-   }
+    "data": {
+        "id": 1,
+        "street": "Jl. Kebon Jeruk",
+        "city": "Jakarta Barat",
+        "province": "DKI Jakarta",
+        "country": "Indonesia",
+        "postal_code": "11530"
+    }
 }
 ```
 
@@ -44,7 +44,7 @@ Response Body (failed):
 
 ```json
 {
-   "error": "Street must not blank, City must not blank, Province must not blank, Country must not blank, Postal code must not blank..."
+    "error": "Street must not blank, City must not blank, Province must not blank, Country must not blank, Postal code must not blank..."
 }
 ```
 
@@ -54,20 +54,20 @@ Endpoint: `GET` /api/contacts/:idContact/addresses/:idAddress
 
 Request Header:
 
--  X-API-TOKEN: token(uuid)
+-   X-API-TOKEN: token(uuid)
 
 Response Body (success):
 
 ```json
 {
-   "data": {
-      "id": 1,
-      "street": "Jl. Kebon Jeruk",
-      "city": "Jakarta Barat",
-      "province": "DKI Jakarta",
-      "country": "Indonesia",
-      "postal_code": "11530"
-   }
+    "data": {
+        "id": 1,
+        "street": "Jl. Kebon Jeruk",
+        "city": "Jakarta Barat",
+        "province": "DKI Jakarta",
+        "country": "Indonesia",
+        "postal_code": "11530"
+    }
 }
 ```
 
@@ -75,7 +75,7 @@ Response Body (failed):
 
 ```json
 {
-   "error": "Address not found..."
+    "error": "Address not found..."
 }
 ```
 
@@ -85,17 +85,17 @@ Endpoint: `PUT` /api/contacts/:idContact/addresses/:idAddress
 
 Request Header:
 
--  X-API-TOKEN: token(uuid)
+-   X-API-TOKEN: token(uuid)
 
 Request Body:
 
 ```json
 {
-   "street": "Jl. Kebon Jeruk",
-   "city": "Jakarta Barat",
-   "province": "DKI Jakarta",
-   "country": "Indonesia",
-   "postal_code": "11530"
+    "street": "Jl. Kebon Jeruk",
+    "city": "Jakarta Barat",
+    "province": "DKI Jakarta",
+    "country": "Indonesia",
+    "postal_code": "11530"
 }
 ```
 
@@ -103,14 +103,14 @@ Response Body (success):
 
 ```json
 {
-   "data": {
-      "id": 1,
-      "street": "Jl. Kebon Jeruk",
-      "city": "Jakarta Barat",
-      "province": "DKI Jakarta",
-      "country": "Indonesia",
-      "postal_code": "11530"
-   }
+    "data": {
+        "id": 1,
+        "street": "Jl. Kebon Jeruk",
+        "city": "Jakarta Barat",
+        "province": "DKI Jakarta",
+        "country": "Indonesia",
+        "postal_code": "11530"
+    }
 }
 ```
 
@@ -118,7 +118,7 @@ Response Body (failed):
 
 ```json
 {
-   "error": "postal code is required..."
+    "error": "postal code is required..."
 }
 ```
 
@@ -128,13 +128,13 @@ Endpoint: `DELETE` /api/contacts/:idContact/addresses/:idAddress
 
 Request Header:
 
--  X-API-TOKEN: token(uuid)
+-   X-API-TOKEN: token(uuid)
 
 Response Body (success):
 
 ```json
 {
-   "data": "OK"
+    "data": "OK"
 }
 ```
 
@@ -142,11 +142,11 @@ Response Body (failed):
 
 ```json
 {
-   "error": "Address not found..."
+    "error": "Address not found..."
 }
 ```
 
-## list Address
+## List Address
 
 Endpoint: `GET` /api/contacts/:idContact/addresses
 
@@ -179,6 +179,6 @@ Response Body (failed):
 
 ```json
 {
-   "error": "Contact is not found..."
+    "error": "Contact is not found..."
 }
 ```
