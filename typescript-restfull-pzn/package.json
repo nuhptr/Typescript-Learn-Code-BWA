@@ -4,7 +4,9 @@
     "description": "",
     "main": "index.ts",
     "scripts": {
-        "test": "jest",
+        "build": "npx tsc",
+        "start": "node dist/src/main.js",
+        "test": "jest --runInBand",
         "test:user": "jest user.test.ts",
         "test:contact": "jest contact.test.ts",
         "test:address": "jest address.test.ts",
