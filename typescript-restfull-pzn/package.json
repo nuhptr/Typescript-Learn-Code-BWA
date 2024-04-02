@@ -13,7 +13,7 @@
         "prisma:generate": "npx prisma generate",
         "prisma:migrate": "npx prisma migrate dev",
         "prisma:studio": "npx prisma studio",
-        "postinstall": "prisma:generate"
+        "postinstall": "npx prisma generate"
     },
     "jest": {
         "transform": {
