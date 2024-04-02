@@ -2,18 +2,18 @@ import bcrypt from "bcrypt"
 import { v4 as uuid } from "uuid"
 import { User } from "@prisma/client"
 
-import { prismaClient } from "@/application/database"
-import { ResponseError } from "@/error/response-error"
+import { prismaClient } from "../application/database"
+import { ResponseError } from "../error/response-error"
 import {
     CreateUserRequest,
     LoginUserRequest,
     UpdateUserRequest,
     UserResponse,
     toUserResponse,
-} from "@/model/user-model"
+} from "../model/user-model"
 
-import { UserValidation } from "@/validation/user-validation"
-import { Validation } from "@/validation/validation"
+import { UserValidation } from "../validation/user-validation"
+import { Validation } from "../validation/validation"
 
 export class UserService {
     // TODO: REGISTER USER (public api)
