@@ -3,6 +3,7 @@ import { Address, Contact, User } from "@prisma/client"
 
 import { prismaClient } from "@/application/database"
 
+//* UserTest class
 export class UserTest {
     static async delete() {
         // using deleteMany whatever data exist or not it still running delete
@@ -27,12 +28,15 @@ export class UserTest {
             where: { username: "test" },
         })
 
-        if (!user) throw new Error("User not found.")
+        if (!user) {
+            throw new Error("User not found.")
+        }
 
         return user
     }
 }
 
+//* ContactTest class
 export class ContactTest {
     static async deleteAll() {
         await prismaClient.contact.deleteMany({
@@ -63,6 +67,7 @@ export class ContactTest {
     }
 }
 
+//* AddressTest class
 export class AddressTest {
     static async deleteAll() {
         await prismaClient.address.deleteMany({
