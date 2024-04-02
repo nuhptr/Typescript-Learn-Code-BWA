@@ -1,17 +1,17 @@
 {
-   "name": "study-case-oop",
-   "version": "1.0.0",
-   "description": "",
-   "main": "index.js",
-   "scripts": {
-      "tsc": "rm -rf build/ && tsc",
-      "ts": "rm -rf build/ && tsc -w",
-      "dev": "nodemon ./build/src/Product.js"
-   },
-   "author": "",
-   "license": "ISC",
-   "devDependencies": {
-      "nodemon": "^2.0.15",
-      "typescript": "^4.5.3"
-   }
+    "name": "study-case-oop",
+    "version": "1.0.0",
+    "author": "",
+    "main": "index.js",
+    "description": "",
+    "license": "ISC",
+    "scripts": {
+        "tsc": "rm -rf build/ && tsc",
+        "ts": "rm -rf build/ && tsc -w",
+        "dev": "nodemon ./build/src/Product.js"
+    },
+    "devDependencies": {
+        "nodemon": "^3.1.0",
+        "typescript": "^5.4.3"
+    }
 }
