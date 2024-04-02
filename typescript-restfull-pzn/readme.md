@@ -7,6 +7,7 @@
 -   [uuid](https://www.npmjs.com/package/uuid) - pnpm add uuid (Unique ID) : `not longer used`
 -   [@types/uuid](https://www.npmjs.com/package/@types/uuid) - pnpm add @types/uuid (Unique ID) : `not longer used`
 -   [helmet](https://www.npmjs.com/package/helmet) - pnpm add helmet (Security)
+
 -   [typescript](https://www.typescriptlang.org/) - pnpm add typescript (Typescript)
     -- npx tsc --init
     -- ubah "module" menjadi "commonjs"
@@ -33,7 +34,7 @@ Then add script :
 ```json
 {
     "scripts": {
-        "test": "jest",
+        "test": "jest --runInBand", // --runInBand for run test in sequence not parallel
         "test:user": "jest user.test.ts",
         "test:contact": "jest contact.test.ts"
     },
@@ -55,6 +56,22 @@ also script :
 {
     "presets": ["@babel/preset-env", "@babel/preset-typescript"]
 }
+```
+
+## Distribution File
+
+For compile entrie typescript project to javascript. Then we can see `./dist` folder appear
+
+```bash
+    npx tsc
+    OR add in package json "build": "npx tsc"
+```
+
+Then you can run the project with :
+
+```bash
+    node "./dist/src/main.js"
+    OR add in package json "start": "node ./dist/src/main.js"
 ```
 
 ## Express Framework
