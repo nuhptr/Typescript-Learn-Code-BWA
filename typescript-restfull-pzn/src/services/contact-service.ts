@@ -1,18 +1,18 @@
 import { Contact, User } from "@prisma/client"
 
-import { prismaClient } from "@/application/database"
+import { prismaClient } from "../application/database"
 import {
     ContactResponse,
     toContactResponse,
     CreateContactRequest,
     UpdateContactRequest,
     SearchContactRequest,
-} from "@/model/contact-model"
-import { Pageable } from "@/model/page"
+} from "../model/contact-model"
+import { Pageable } from "../model/page"
 
-import { ContactValidation } from "@/validation/contact-validation"
-import { Validation } from "@/validation/validation"
-import { ResponseError } from "@/error/response-error"
+import { ContactValidation } from "../validation/contact-validation"
+import { Validation } from "../validation/validation"
+import { ResponseError } from "../error/response-error"
 
 export class ContactService {
     // TODO: CREATE SERVICE (private api)
