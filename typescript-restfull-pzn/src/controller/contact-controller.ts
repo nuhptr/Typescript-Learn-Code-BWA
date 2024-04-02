@@ -1,13 +1,13 @@
 import { NextFunction, Response } from "express"
 
-import { UserRequest } from "@/type/user-request"
-import { ContactService } from "@/services/contact-service"
+import { UserRequest } from "../type/user-request"
+import { ContactService } from "../services/contact-service"
 import {
     CreateContactRequest,
     SearchContactRequest,
     UpdateContactRequest,
-} from "@/model/contact-model"
-import { logger } from "@/application/logging"
+} from "../model/contact-model"
+import { logger } from "../application/logging"
 
 export class ContactController {
     static async create(req: UserRequest, res: Response, next: NextFunction) {
